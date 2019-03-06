@@ -9,9 +9,9 @@ class GameObject:
         self.x = x
         self.y = y
 
-    def tick(self, screen):
+    def tick(self, game):
         self.logic()
-        self.draw(screen)
+        self.draw(game.screen)
 
     def logic(self):
         pass

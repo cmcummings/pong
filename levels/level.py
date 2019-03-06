@@ -26,6 +26,6 @@ class Level:
             if obj.id == obj_id:
                 self.game_objects.remove(obj) 
 
-    def tick(self, screen):
+    def tick(self, game):
         for obj in self.game_objects:
-            obj.tick(screen)
+            obj.tick(game)

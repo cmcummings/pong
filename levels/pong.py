@@ -12,29 +12,33 @@ import random
 class PongLevel(Level):
     """Level for the pong game."""
 
-    def __init__(self):
+    def __init__(self, mode):
         Level.__init__(self)
+        self.mode = mode
 
         self.score = [0, 0]
         self.score_font = load_font(None, 100)
 
         self.player1 = Paddle("Player1", 0, HEIGHT/2, PADDLE_WIDTH, PADDLE_HEIGHT, PLAYER1_CONTROLS)
-        self.player2 = Paddle("Player2", WIDTH-PADDLE_WIDTH, HEIGHT/2, PADDLE_WIDTH, PADDLE_HEIGHT, PLAYER2_CONTROLS)
+        if mode == 2:
+            self.player2 = Paddle("Player2", WIDTH-PADDLE_WIDTH, HEIGHT/2, PADDLE_WIDTH, PADDLE_HEIGHT, PLAYER2_CONTROLS)
+        elif mode == 1:
+            self.player2 = Paddle("Player2", WIDTH-PADDLE_WIDTH, HEIGHT/2, PADDLE_WIDTH, PADDLE_HEIGHT, None)
         self.ball = Ball("Ball", WIDTH/2, HEIGHT/2, 10, 10)
         
         self.add_object(self.player1, self.player2, self.ball)
 
-    def tick(self, screen):
+    def tick(self, game):
         self.logic()
-        self.draw(screen)
-        Level.tick(self, screen)
+        self.draw(game.screen)
+        Level.tick(self, game)
 
     def logic(self):
         if self.ball.ballrect.colliderect(self.player1.paddlerect):
-            self.ball.bounce(x=True, speed_mult=1.1)
+            self.ball.bounce(x=True, speed_mult=1.5)
             self.player1.shrink(0.9)
         elif self.ball.ballrect.colliderect(self.player2.paddlerect):
-            self.ball.bounce(x=True, speed_mult=1.1)
+            self.ball.bounce(x=True, speed_mult=1.5)
             self.player2.shrink(0.9)
             
 
@@ -48,6 +52,9 @@ class PongLevel(Level):
             self.player1.reset_size()
             self.player2.reset_size()
             self.score[0] += 1
+
+        if self.mode == 1:
+            self.player2.auto(self.ball.ballrect)
 
     def draw(self, screen):
         screen.fill(color.BLACK)

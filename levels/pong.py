@@ -4,7 +4,7 @@ from .level import Level
 from objects.paddle import Paddle
 from objects.ball import Ball
 import utils.colors as color
-from utils.res import load_font
+from utils.res import load_font, load_audio
 from config import PLAYER1_CONTROLS, PLAYER2_CONTROLS, PADDLE_WIDTH, PADDLE_HEIGHT, WIDTH, HEIGHT
 import random
 

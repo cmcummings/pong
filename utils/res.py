@@ -11,3 +11,6 @@ def load_font(file_name, size):
     if file_name is None:
         return pygame.font.Font(None, size)
     return pygame.font.Font(os.path.join(RESOURCE_DIR, file_name), size)
+
+def load_audio(file_name):
+    return pygame.mixer.Sound(os.path.join(RESOURCE_DIR, file_name))

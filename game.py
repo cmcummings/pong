@@ -6,6 +6,7 @@ Pong game
 import sys, pygame
 import utils.colors as color
 from levels.pong import PongLevel
+from levels.main_menu import MainMenuLevel
 from config import SIZE
 
 
@@ -18,7 +19,7 @@ class Game:
         pygame.display.set_caption("Pong")
 
         # Intro level
-        self.level = PongLevel()
+        self.level = MainMenuLevel()
 
         # Game loop
         while 1:
@@ -30,10 +31,9 @@ class Game:
             if event.type == pygame.QUIT: 
                 sys.exit()
 
-        self.level.tick(self.screen)
+        self.level.tick(self)
 
         pygame.display.flip() # Buffer
-
 
 if __name__ == "__main__":
     Game()

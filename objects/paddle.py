@@ -2,6 +2,7 @@
 import pygame
 from utils.colors import WHITE
 from .game_object import GameObject
+from config import HEIGHT
 
 
 class Paddle(GameObject):
@@ -16,9 +17,15 @@ class Paddle(GameObject):
         self.speed = [0, 0]
 
     def logic(self):
+        self.speed = [0, 0]
+
         pressed = pygame.key.get_pressed()
-        if pressed[self.controls["up"]] is True:
-            print("up")
+        if pressed[self.controls["up"]] == 1 and self.paddlerect.top > 0:
+            self.speed[1] = -2
+        if pressed[self.controls["down"]] == 1 and self.paddlerect.bottom < HEIGHT:
+            self.speed[1] = 2
+
+        self.paddlerect = self.paddlerect.move(self.speed)
 
     def draw(self, screen):
         pygame.draw.rect(screen, WHITE, self.paddlerect)

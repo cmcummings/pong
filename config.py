@@ -1,18 +1,19 @@
 # config.py
 # Settings
-
+import pygame
 
 RESOURCE_DIR = "/home/connor/Documents/Projects/Python/pong/res"
 
 SIZE = WIDTH, HEIGHT = 1280, 720
 
+PADDLE_SIZE = PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
 
 PLAYER1_CONTROLS = {
-    "up": "K_w",
-    "down": "K_s"
+    "up": pygame.K_w,
+    "down": pygame.K_s
 }
 
 PLAYER2_CONTROLS = {
-    "up": "K_UP",
-    "down": "K_DOWN"
+    "up": pygame.K_UP,
+    "down": pygame.K_DOWN
 }

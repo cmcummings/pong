@@ -8,4 +8,6 @@ def load_resource(file_name):
     return pygame.image.load(os.path.join(RESOURCE_DIR, file_name))
 
 def load_font(file_name, size):
-    return pygame.font.Font(file_name, size)
+    if file_name is None:
+        return pygame.font.Font(None, size)
+    return pygame.font.Font(os.path.join(RESOURCE_DIR, file_name), size)

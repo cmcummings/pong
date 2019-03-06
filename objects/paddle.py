@@ -11,6 +11,7 @@ class Paddle(GameObject):
     def __init__(self, obj_id, x, y, width, height, controls):
         GameObject.__init__(self, obj_id, x, y)
         self.controls = controls
+        self.default_size = [width, height]
 
         self.paddlerect = pygame.Rect(x, y, width, height)
 
@@ -29,3 +30,9 @@ class Paddle(GameObject):
 
     def draw(self, screen):
         pygame.draw.rect(screen, WHITE, self.paddlerect)
+
+    def shrink(self, mult):
+        self.paddlerect.height *= mult
+
+    def reset_size(self):
+        self.paddlerect.size = self.default_size

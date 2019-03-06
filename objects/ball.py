@@ -19,14 +19,16 @@ class Ball(GameObject):
         self.ballrect = self.ballrect.move(self.speed)
         if self.ballrect.top < 0 or self.ballrect.bottom > HEIGHT:
             self.speed[1] = -self.speed[1]
-
-
-        if self.ballrect.left < 0:
-            self.ballrect.x, self.ballrect.y = self.start_pos
-            self.speed = [1, [-1, 1][random.randint(0, 1)]]
-        elif self.ballrect.right > WIDTH:
-            self.ballrect.x, self.ballrect.y = self.start_pos
-            self.speed = [-1, [-1, 1][random.randint(0, 1)]]
         
     def draw(self, screen):
         pygame.draw.rect(screen, WHITE, self.ballrect)
+
+    def bounce(self, x=False, y=False, speed_mult=1):
+        if x: self.speed[0] = -self.speed[0]
+        if y: self.speed[1] = -self.speed[1]
+        self.speed[0] *= speed_mult
+        self.speed[1] *= speed_mult
+
+    def respawn(self, direction):
+        self.ballrect.x, self.ballrect.y = self.start_pos
+        self.speed = [direction, [-1, 1][random.randint(0, 1)]]

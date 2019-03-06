@@ -15,6 +15,7 @@ class Game:
         # Initialize game
         pygame.init()
         self.screen = pygame.display.set_mode(SIZE)
+        pygame.display.set_caption("Pong")
 
         # Intro level
         self.level = PongLevel()

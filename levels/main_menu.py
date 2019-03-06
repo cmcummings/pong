@@ -15,7 +15,7 @@ class MainMenuLevel(Level):
         self.reg_font = load_font(None, 50)
 
         self.select_buffer = pygame.time.Clock()
-        self.last_select = 0
+        self.last_select = 60
 
         self.selection = 0
 

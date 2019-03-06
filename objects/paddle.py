@@ -18,13 +18,14 @@ class Paddle(GameObject):
         self.speed = [0, 0]
 
     def logic(self):
-        self.speed = [0, 0]
 
-        pressed = pygame.key.get_pressed()
-        if pressed[self.controls["up"]] == 1 and self.paddlerect.top > 0:
-            self.speed[1] = -2
-        if pressed[self.controls["down"]] == 1 and self.paddlerect.bottom < HEIGHT:
-            self.speed[1] = 2
+        if self.controls != None:
+            self.speed = [0, 0]
+            pressed = pygame.key.get_pressed()
+            if pressed[self.controls["up"]] == 1 and self.paddlerect.top > 0:
+                self.speed[1] = -2
+            if pressed[self.controls["down"]] == 1 and self.paddlerect.bottom < HEIGHT:
+                self.speed[1] = 2
 
         self.paddlerect = self.paddlerect.move(self.speed)
 
@@ -36,3 +37,10 @@ class Paddle(GameObject):
 
     def reset_size(self):
         self.paddlerect.size = self.default_size
+
+    def auto(self, ball):
+        self.speed = [0, 0]
+        if self.paddlerect.y > ball.y and self.paddlerect.top > 0:
+            self.speed[1] = -2
+        elif self.paddlerect.bottom < HEIGHT:
+            self.speed[1] = 2

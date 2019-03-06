@@ -9,6 +9,9 @@ from levels.pong import PongLevel
 from levels.main_menu import MainMenuLevel
 from config import SIZE
 
+ONE_PLAYER = "1P"
+TWO_PLAYER = "2P"
+MAIN_MENU = "MAIN MENU"
 
 class Game:
 
@@ -34,6 +37,15 @@ class Game:
         self.level.tick(self)
 
         pygame.display.flip() # Buffer
+
+    def change_level(self, level):
+        if level == ONE_PLAYER:
+            self.level = PongLevel(1)
+        elif level == TWO_PLAYER:
+            self.level = PongLevel(2)
+        elif level == MAIN_MENU:
+            self.level = MainMenuLevel()
+
 
 if __name__ == "__main__":
     Game()

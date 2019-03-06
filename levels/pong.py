@@ -29,11 +29,15 @@ class PongLevel(Level):
         self.add_object(self.player1, self.player2, self.ball)
 
     def tick(self, game):
-        self.logic()
+        self.logic(game)
         self.draw(game.screen)
         Level.tick(self, game)
 
-    def logic(self):
+    def logic(self, game):
+        pressed = pygame.key.get_pressed()
+        if pressed[pygame.K_ESCAPE]:
+            game.change_level("MAIN MENU")
+
         if self.ball.ballrect.colliderect(self.player1.paddlerect):
             self.ball.bounce(x=True, speed_mult=1.5)
             self.player1.shrink(0.9)

@@ -1,7 +1,6 @@
 # main_menu.py
 import pygame, sys
 from .level import Level
-from levels.pong import PongLevel
 import utils.colors as color
 from utils.res import load_font
 from config import WIDTH
@@ -37,12 +36,15 @@ class MainMenuLevel(Level):
             elif pressed[pygame.K_DOWN]:
                 self.advance_selection()
                 self.last_select = 0
+            elif pressed[pygame.K_ESCAPE]:
+                pygame.quit()
+                sys.exit()
         
         if pressed[pygame.K_RETURN]:
             if self.selection == 0: # 1 player
-                game.level = PongLevel(1)
+                game.change_level("1P")
             elif self.selection == 1: # 2 player
-                game.level = PongLevel(2)
+                game.change_level("2P")
             elif self.selection == 2: # quit
                 pygame.quit()
                 sys.exit()

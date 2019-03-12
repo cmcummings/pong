@@ -1,5 +1,9 @@
 # pong
 
+![Title screen](https://raw.githubusercontent.com/gestalt8003/pong/master/captures/title.png)
+
+![2P Mode](https://raw.githubusercontent.com/gestalt8003/pong/master/captures/2p.png)
+
 ## Requirements
 - pygame
 

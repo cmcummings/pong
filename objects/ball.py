@@ -32,3 +32,6 @@ class Ball(GameObject):
     def respawn(self, direction):
         self.ballrect.x, self.ballrect.y = self.start_pos
         self.speed = [direction, [-1, 1][random.randint(0, 1)]]
+
+    def on_collide(self, collided_with):
+        pass

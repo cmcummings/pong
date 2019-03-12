@@ -1,12 +1,11 @@
 # pong.py
-import pygame
+import pygame, random
 from .level import Level
 from objects.paddle import Paddle
 from objects.ball import Ball
 import utils.colors as color
 from utils.res import load_font, load_audio
 from config import PLAYER1_CONTROLS, PLAYER2_CONTROLS, PADDLE_WIDTH, PADDLE_HEIGHT, WIDTH, HEIGHT
-import random
 
 
 class PongLevel(Level):
@@ -44,7 +43,6 @@ class PongLevel(Level):
         elif self.ball.ballrect.colliderect(self.player2.paddlerect):
             self.ball.bounce(x=True, speed_mult=1.5)
             self.player2.shrink(0.9)
-            
 
         if self.ball.ballrect.left < 0:
             self.ball.respawn(1)

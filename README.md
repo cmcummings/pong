@@ -1,6 +1,6 @@
 # pong
 
-![Title screen](https://raw.githubusercontent.com/gestalt8003/pong/master/captures/title.png)
+![Title screen](https://raw.githubusercontent.com/gestalt8003/pong/master/captures/title_screen.png)
 
 ![2P Mode](https://raw.githubusercontent.com/gestalt8003/pong/master/captures/2p.png)
 
